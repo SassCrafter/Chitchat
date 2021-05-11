@@ -1,0 +1,35 @@
+.container {
+	width: 100%;
+	max-width: $max-width;
+	margin: 0 auto;
+	padding: 0 2rem;
+
+	@include mq($tablet) {
+		padding: 0 4rem;
+	}
+}
+
+.relative {
+	position: relative;
+	z-index: 2;
+}
+
+.bg-orange {
+	background-color: $orange !important;
+}
+
+.bg-bluish {
+	background-color: $bluish !important;
+}
+
+.bg-primary {
+	background-color: $primary-color !important;
+}
+
+.bg-blue {
+	background-color: $blue !important;
+}
+
+.mb-2 {
+	margin-bottom: 2rem;
+}

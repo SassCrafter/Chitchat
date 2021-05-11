@@ -1,0 +1,13 @@
+@import "../../../styles/config.module";
+
+.Container {
+	padding: 3rem 0;
+}
+
+.FullHeight {
+	height: 100vh;
+}
+
+.ContentCenter {
+	@include flexCenter();
+}

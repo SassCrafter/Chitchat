@@ -1,0 +1,31 @@
+@mixin mq($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin flex($direction: row, $ai: flex-start, $jc: space-between) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $ai;
+  justify-content: $jc;
+}
+
+@mixin flexCenter($direction: row) {
+  @include flex($direction, center, center);
+}
+
+@mixin flexColumn($ai: center, $jc: flex-start) {
+  @include flex(column, $ai, $jc);
+}
+
+@mixin absolute($top: 0, $left: 0) {
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+
+@mixin absoluteCenter {
+  @include absolute(50%, 50%);
+  transform: translate(-50%, -50%);
+}
