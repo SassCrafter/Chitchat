@@ -1,19 +1,19 @@
 import React from "react";
 import {
-  LoginForm,
+  SignupForm,
   Logo,
   LeftPage,
   RightPage,
   PageContainer,
   PageAnimation,
-} from "../components/";
+} from "../components";
 
-function Login() {
+function Signup() {
   return (
     <PageContainer>
       <LeftPage className="p-2">
         <Logo size="big" className="mb-2" />
-        <LoginForm />
+        <SignupForm />
       </LeftPage>
       <RightPage>
         <PageAnimation />
@@ -22,4 +22,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;

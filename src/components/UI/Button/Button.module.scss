@@ -1,40 +1,50 @@
 @import "../../../styles/config.module";
 
 .Btn {
-	display: inline-block;
-	cursor: pointer;
-	outline: none;
-	padding: 1rem 2rem;
-	border: 1px solid transparent;
-	border-radius: 0.5rem;
-	text-transform: capitalize;
-	font-size: 1.6rem;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  padding: 1rem 2rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  text-transform: capitalize;
+  font-size: 1.6rem;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.Big {
+  font-size: 1.8rem;
+  padding: 1rem 4rem;
 }
 
 .Primary {
-	background-color: $primary-color;
-	color: white;
+  background-color: $primary-color;
+  color: white;
 }
 
 .Dark {
-	background-color: $secondary-color;
-	color: white;
+  background-color: $secondary-color;
+  color: white;
 }
 
 .Round {
-	padding: 1rem;
-	width: 4rem;
-	height: 4rem;
-	border-radius: 50%;
-	text-align: center;
-	font-size: 2rem;
-	@include flexCenter();
+  padding: 1rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 2rem;
+  @include flexCenter();
 }
 
 .HoverScale {
-	transition: transform $t-time ease-in-out;
+  transition: transform $t-time ease-in-out;
 
-	&:hover {
-		transform: scale(1.05);
-	}
+  &:not(:disabled):hover {
+    transform: scale(1.05);
+  }
 }

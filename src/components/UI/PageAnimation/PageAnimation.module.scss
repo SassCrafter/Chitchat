@@ -1,0 +1,99 @@
+@import "../../../styles/config.module";
+
+.Container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-color: $bluish;
+  overflow: hidden;
+}
+
+.MainCircle {
+  background-image: linear-gradient(#cde7fa, #f1f8fe, #f1f8fe);
+  @include absoluteCenter;
+  border-radius: 50%;
+  width: 30vw;
+  padding-top: 30vw;
+}
+
+.TopCircle {
+  background-image: linear-gradient(#f1f8fe, #f1f8fe, #cde7fa);
+  width: 10%;
+  padding-top: 10%;
+  border-radius: 50%;
+  @include absolute(5%, 15%);
+
+  @include mq($pc) {
+    width: 7%;
+    padding-top: 7%;
+  }
+}
+
+.RightTopCircle {
+  background-image: linear-gradient(
+    to right,
+    #cde7fa,
+    #f1f8fe,
+    #f1f8fe,
+    #f1f8fe
+  );
+  width: 12%;
+  padding-top: 12%;
+  border-radius: 50%;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+}
+
+.Login {
+  @include absoluteCenter;
+  width: 35%;
+}
+
+.Boy {
+  @include absolute(55%, 40%);
+  width: 12rem;
+  height: 12rem;
+}
+
+.Girl {
+  @include absolute(calc(50% - 20rem), calc(50% + 10rem));
+  width: 15rem;
+  height: 15rem;
+}
+
+.Heart {
+  @include absolute(20%, 60%);
+  width: 5rem;
+}
+
+.Hash {
+  @include absolute(22%, 65%);
+  width: 5rem;
+}
+.HashTwo {
+  @include absolute(57%, 36%);
+  width: 5rem;
+  transform: scaleX(-1);
+}
+
+.CloudOne,
+.CloudTwo,
+.CloudThree {
+  opacity: 0.85;
+}
+
+.CloudOne {
+  @include absolute(35%, 20%);
+  width: 13rem;
+}
+
+.CloudTwo {
+  @include absolute(20%, 40%);
+  width: 30rem;
+}
+
+.CloudThree {
+  @include absolute(80%, 15%);
+  width: 25rem;
+}

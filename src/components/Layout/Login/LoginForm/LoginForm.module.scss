@@ -1,33 +1,35 @@
 @import "../../../../styles/config.module";
 
 .RememberMe {
-	@include flex;
+  @include flex;
 }
 
 .Actions {
-	@include flex(row, flex-start, center);
-	margin-bottom: 2rem;
+  @include flex(row, flex-start, center);
+  margin-bottom: 2rem;
 
-	button {
-		margin: 0 2rem;
-		padding: 1rem 3rem;
-		font-size: 1.8rem;
-	}
+  button,
+  a {
+    line-height: 1.2;
+    margin: 0 2rem;
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
+  }
 
-	@media screen and (max-width: 350px) {
-		flex-direction: column;
-		align-items: center;
+  @media screen and (max-width: 350px) {
+    flex-direction: column;
+    align-items: center;
 
-		button {
-			margin: 0 0 2rem 0;
-		}
-	}
+    button {
+      margin: 0 0 2rem 0;
+    }
+  }
 }
 
 .MoreOptions {
-	@include flex(row, flex-start, center);
+  @include flex(row, flex-start, center);
 
-	button {
-		margin: 0 1rem;
-	}
+  button {
+    margin: 0 1rem;
+  }
 }

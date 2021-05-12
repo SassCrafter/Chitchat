@@ -1,35 +1,47 @@
 .container {
-	width: 100%;
-	max-width: $max-width;
-	margin: 0 auto;
-	padding: 0 2rem;
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 2rem;
 
-	@include mq($tablet) {
-		padding: 0 4rem;
-	}
+  @include mq($tablet) {
+    padding: 0 4rem;
+  }
 }
 
 .relative {
-	position: relative;
-	z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 
 .bg-orange {
-	background-color: $orange !important;
+  background-color: $orange !important;
 }
 
 .bg-bluish {
-	background-color: $bluish !important;
+  background-color: $bluish !important;
 }
 
 .bg-primary {
-	background-color: $primary-color !important;
+  background-color: $primary-color !important;
 }
 
 .bg-blue {
-	background-color: $blue !important;
+  background-color: $blue !important;
 }
 
 .mb-2 {
-	margin-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+
+.p-2 {
+  padding: 2rem;
+}
+
+.flex-wrap {
+  @include flex(row, flex-start, center);
+
+  & > * {
+    margin: 0 1rem;
+  }
 }

@@ -1,0 +1,10 @@
+@import "../../../styles/config.module";
+
+.Container {
+  width: 100%;
+}
+
+.Row {
+  width: 100%;
+  @include flexColumn();
+}

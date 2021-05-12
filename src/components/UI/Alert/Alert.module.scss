@@ -1,0 +1,8 @@
+@import "../../../styles/config.module";
+
+.Container {
+  padding: 1rem;
+  background-color: $error;
+  color: white;
+  border-radius: 0.5rem;
+}

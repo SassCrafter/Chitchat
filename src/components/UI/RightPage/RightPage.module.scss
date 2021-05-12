@@ -1,0 +1,14 @@
+@import "../../../styles/config.module";
+
+.Container {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  flex: 1;
+
+  @include mq($tablet) {
+    position: static;
+  }
+}
