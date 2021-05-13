@@ -8,19 +8,25 @@ import {
   passwordValidation,
   usernameValidation,
 } from "../../../../helpers/inputValidation";
-import { useAuth } from "../../../../context/AuthContext";
+import { useDispatch } from "react-redux";
+import { signupWithEmailAndPassword } from "../../../../store/auth-actions";
 
 function Signup() {
-  const { signup, googleSignin } = useAuth();
-  const [error, setError] = useState("");
+  const dispatch = useDispatch();
 
-  const googleSigninHandler = () => {
-    googleSignin()
-      .then((result) => {
-        console.log(result);
-        setError("");
-      })
-      .catch((error) => setError(error.message));
+  // const googleSigninHandler = () => {
+  //   googleSignin()
+  //     .then((result) => {
+  //       console.log(result);
+  //       setError("");
+  //     })
+  //     .catch((error) => setError(error.message));
+  // };
+
+  const submitHandler = (values) => {
+    dispatch(
+      signupWithEmailAndPassword(values.email, values.password, values.username)
+    );
   };
 
   return (
@@ -36,11 +42,8 @@ function Signup() {
         password: passwordValidation,
       })}
       onSubmit={(values, action) => {
-        signup(values.email, values.password, values.username)
-          .then(action.resetForm())
-          .catch((error) => {
-            setError(error.message);
-          });
+        submitHandler(values);
+        action.resetForm();
       }}
     >
       {({ dirty, isValid, isSubmiting, handleSubmit }) => (
@@ -49,7 +52,7 @@ function Signup() {
           <Form.Lead>
             Wellcome to chitchat please login to your account.
           </Form.Lead>
-          {error && <Form.Error message={error} />}
+          {/* {error && <Form.Error message={error} />} */}
           <Form.Group>
             <Form.Input type="text" name="username" label="Username" />
           </Form.Group>
@@ -69,14 +72,8 @@ function Signup() {
             </Form.Submit>
           </div>
           <Form.Connect>Or Connect With</Form.Connect>
-          {/* <Form.Connect>Or Connect With</Form.Connect> */}
           <div className="flex-wrap">
-            <Button
-              type="button"
-              round
-              className="bg-orange"
-              onClick={googleSigninHandler}
-            >
+            <Button type="button" round className="bg-orange">
               <i className="fab fa-google"></i>
             </Button>
             <Button type="button" round className="bg-blue">

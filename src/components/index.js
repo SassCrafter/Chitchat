@@ -11,6 +11,9 @@ export { default as Flex } from "./UI/Flex/Flex";
 export { default as Image } from "./UI/Image/Image";
 export { default as AnimatedImage } from "./UI/AnimatedImage/AnimatedImage";
 export { default as Alert } from "./UI/Alert/Alert";
+export { default as Modal } from "./UI/Modal/Modal";
+export { default as Notification } from "./UI/Notification/Notification";
+export { default as Card } from "./UI/Card/Card";
 
 export { default as LoginForm } from "./Layout/Login/LoginForm/LoginForm";
 export { default as SignupForm } from "./Layout/Signup/SignupForm/SignupForm";

@@ -1,0 +1,68 @@
+@import "../../../styles/config.module";
+
+.Container {
+  width: 90% !important;
+  max-width: 50rem;
+  background-color: white;
+  position: fixed;
+  top: 15%;
+  left: 0;
+  transform: translateX(-100%);
+  z-index: 200;
+  visibility: hidden;
+  @include flex(row, stretch, flex-start);
+  transition: transform $t-time ease-in-out, visibility $t-time linear;
+}
+
+.Open {
+  visibility: visible;
+  transform: translateX(0);
+  transition: transform $t-time ease-in-out;
+}
+
+.Header {
+  @include flex;
+}
+
+.Left {
+  @include flex(row, center, flex-start);
+  margin-right: 2rem;
+}
+
+.Line {
+  width: 4px;
+  height: 100%;
+  border-radius: 0.5rem;
+  background-color: $primary-color;
+  margin-right: 2rem;
+}
+
+.Icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: $primary-color;
+  @include flexCenter;
+
+  i {
+    color: white;
+  }
+}
+
+.Warning {
+  .Line {
+    background-color: $warning;
+  }
+  .Icon {
+    background-color: $warning;
+  }
+}
+
+.Error {
+  .Line {
+    background-color: $error;
+  }
+  .Icon {
+    background-color: $error;
+  }
+}
