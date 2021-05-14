@@ -8,8 +8,15 @@ import {
   passwordValidation,
 } from "../../../../helpers/inputValidation";
 import { SIGN_UP } from "../../../../constants/routes";
+import { useSelector, useDispatch } from "react-redux";
+import { loginWithEmailAndPassword } from "../../../../store/auth-actions";
 
 function Login() {
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.auth);
+  const loginHandler = ({ email, password }) => {
+    dispatch(loginWithEmailAndPassword(email, password));
+  };
   return (
     <Formik
       initialValues={{
@@ -23,10 +30,12 @@ function Login() {
       })}
       onSubmit={(values, action) => {
         console.log(values);
+        action.resetForm();
+        loginHandler(values);
       }}
     >
-      {({ dirty, isValid, isSubmiting }) => (
-        <Form>
+      {({ dirty, isValid, isSubmiting, handleSubmit }) => (
+        <Form onSubmit={handleSubmit}>
           <Form.Title>Hello Everyone , We are Chitchat</Form.Title>
           <Form.Lead>
             Wellcome to chitchat please login to your account.
@@ -50,7 +59,7 @@ function Login() {
           </Form.Group>
           <div className={classes.Actions}>
             <Form.Submit disabled={!(dirty && isValid) || isSubmiting}>
-              Login
+              {loading ? "Loading" : "Login"}
             </Form.Submit>
             <Button btnType="link" styleType="dark" to={SIGN_UP}>
               Signup

@@ -6,8 +6,8 @@
   background-color: white;
   position: fixed;
   top: 15%;
-  left: 0;
-  transform: translateX(-100%);
+  left: 50%;
+  transform: translateX(-50%) scale(0);
   z-index: 200;
   visibility: hidden;
   @include flex(row, stretch, flex-start);
@@ -16,7 +16,7 @@
 
 .Open {
   visibility: visible;
-  transform: translateX(0);
+  transform: translateX(-50%) scale(1);
   transition: transform $t-time ease-in-out;
 }
 

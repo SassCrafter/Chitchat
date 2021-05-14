@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "./Signup.module.scss";
 import { Form, Button } from "../../../index";
 import { Formik } from "formik";
@@ -8,20 +8,19 @@ import {
   passwordValidation,
   usernameValidation,
 } from "../../../../helpers/inputValidation";
-import { useDispatch } from "react-redux";
-import { signupWithEmailAndPassword } from "../../../../store/auth-actions";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  signupWithEmailAndPassword,
+  signupWithGoogle,
+} from "../../../../store/auth-actions";
 
 function Signup() {
   const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.auth);
 
-  // const googleSigninHandler = () => {
-  //   googleSignin()
-  //     .then((result) => {
-  //       console.log(result);
-  //       setError("");
-  //     })
-  //     .catch((error) => setError(error.message));
-  // };
+  const googleSigninHandler = () => {
+    dispatch(signupWithGoogle());
+  };
 
   const submitHandler = (values) => {
     dispatch(
@@ -68,12 +67,17 @@ function Signup() {
               size="big"
               disabled={!(dirty && isValid) || isSubmiting}
             >
-              Signup
+              {loading ? "Loading" : "Signup"}
             </Form.Submit>
           </div>
           <Form.Connect>Or Connect With</Form.Connect>
           <div className="flex-wrap">
-            <Button type="button" round className="bg-orange">
+            <Button
+              type="button"
+              onClick={googleSigninHandler}
+              round
+              className="bg-orange"
+            >
               <i className="fab fa-google"></i>
             </Button>
             <Button type="button" round className="bg-blue">

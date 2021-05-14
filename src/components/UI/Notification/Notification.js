@@ -7,7 +7,7 @@ import { notificationActions } from "../../../store";
 
 function NotificationEL({
   open,
-  type = "default",
+  type,
   title,
   message,
   iconClass,
@@ -20,8 +20,11 @@ function NotificationEL({
     warning: classes.Warning,
   };
 
+  console.log(type, styleClasses[type]);
+
   const closeHandler = () => {
-    dispatch(notificationActions.closeNotification);
+    dispatch(notificationActions.closeNotification());
+    console.log("Close handler");
   };
   return (
     <Card

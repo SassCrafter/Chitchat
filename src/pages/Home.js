@@ -1,14 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { SIGN_UP } from "../constants/routes";
+import { Button } from "../components";
+import { useDispatch } from "react-redux";
+import { signOut } from "../store/auth-actions";
 
 function Home() {
-	return (
-		<div>
-			<h1>Home</h1>
-			<Link to={SIGN_UP}>Sign up</Link>
-		</div>
-	);
+  const dispatch = useDispatch();
+  const signOutHandler = () => {
+    dispatch(signOut());
+  };
+  return (
+    <div>
+      <h1>Home</h1>
+      <Link to="/signup" style={{ display: "block", marginBottom: 30 }}>
+        Signup
+      </Link>
+      <Button onClick={signOutHandler}>Sign out</Button>
+    </div>
+  );
 }
 
 export default Home;

@@ -2,15 +2,16 @@ import firebase from "firebase";
 import "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCdHLHQTqZL5efQCfs-qWG7kkJg8Uw-R40",
-  authDomain: "chitchat-96fd9.firebaseapp.com",
-  projectId: "chitchat-96fd9",
-  storageBucket: "chitchat-96fd9.appspot.com",
-  messagingSenderId: "1085801983412",
-  appId: "1:1085801983412:web:98728568775bacd81c56e1",
+	apiKey: "AIzaSyBtbzcgdNrsa_5SnwoIsCzS8Czye34MMes",
+	authDomain: "chitchat-2cf53.firebaseapp.com",
+	projectId: "chitchat-2cf53",
+	storageBucket: "chitchat-2cf53.appspot.com",
+	messagingSenderId: "793039795387",
+	appId: "1:793039795387:web:d8cc4523efbace3e15259e",
 };
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 export const auth = app.auth();
-export const provider = new firebase.auth.GoogleAuthProvider();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+
 export default app;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
-import { auth, provider } from "../lib/firebase";
+import { auth, googleProvider } from "../lib/firebase";
 
 const AuthContext = createContext(null);
 
@@ -31,7 +31,7 @@ function AuthProvider({ children }) {
   };
 
   const googleSignin = () => {
-    return auth.signInWithPopup(provider);
+    return auth.signInWithPopup(googleProvider);
   };
 
   const value = {
