@@ -21,12 +21,17 @@
 }
 
 .Header {
+  width: 100%;
   @include flex;
 }
 
 .Left {
   @include flex(row, center, flex-start);
   margin-right: 2rem;
+}
+
+.Right {
+  flex: 1;
 }
 
 .Line {

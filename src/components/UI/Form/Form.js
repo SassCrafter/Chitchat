@@ -36,14 +36,6 @@ Form.Submit = function FormSubmit({ children, center, ...restProps }) {
   );
 };
 
-Form.Connect = function FormConnect({ children, ...restProps }) {
-  return (
-    <div className={classes.Connect}>
-      <p>{children}</p>
-    </div>
-  );
-};
-
 Form.Error = function FormError({ message }) {
   return <Alert className={classes.Error} message={message} />;
 };

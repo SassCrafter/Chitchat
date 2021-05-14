@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Home, Login, Signup } from "./pages/";
+import { Router, Switch, Route } from "react-router-dom";
+import { Home, Login, Signup, ResetPassword } from "./pages/";
 import { Notification } from "./components";
 import * as ROUTES from "./constants/routes";
 import { useSelector } from "react-redux";
 import { ProtectedRoute, IsUserRedirect } from "./helpers/routes";
 import useAuth from "./hooks/use-auth";
+import history from "./helpers/history";
 
 function App() {
   const { isOpen: notificationIsOpen, notification } = useSelector(
@@ -15,7 +16,7 @@ function App() {
   console.log(user);
 
   return (
-    <Router>
+    <Router history={history}>
       <Notification
         open={notificationIsOpen}
         type={notification.status}
@@ -39,6 +40,9 @@ function App() {
         >
           <Signup />
         </IsUserRedirect>
+        <Route path={ROUTES.RESET_PASSWORD}>
+          <ResetPassword />
+        </Route>
         <ProtectedRoute user={user} exact path={ROUTES.HOME}>
           <Home />
         </ProtectedRoute>

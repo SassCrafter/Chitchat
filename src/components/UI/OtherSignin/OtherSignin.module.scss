@@ -1,0 +1,28 @@
+@import "../../../styles/config.module";
+
+.Connect {
+	position: relative;
+	@include flex(row, center);
+	margin-bottom: 2rem;
+
+	p {
+		margin: 0 1rem;
+	}
+
+	&::before,
+	&::after {
+		content: "";
+		display: inline-block;
+		flex: 1;
+		height: 1px;
+		background: $gray;
+	}
+}
+
+.Buttons {
+	@include flex(row, flex-start, center);
+
+	& > * {
+		margin: 0 1rem;
+	}
+}

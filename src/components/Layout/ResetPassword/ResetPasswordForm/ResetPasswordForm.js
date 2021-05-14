@@ -1,40 +1,32 @@
 import React from "react";
-import classes from "./Signup.module.scss";
-import { Form, Button, OtherSignin } from "../../../index";
+import classes from "./ResetPassword.module.scss";
+import { Form, Button } from "../../../index";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import {
-  emailValidation,
   passwordValidation,
-  usernameValidation,
+  confirmPasswordValidation,
 } from "../../../../helpers/inputValidation";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  signupWithEmailAndPassword,
-  signupWithGoogle,
-} from "../../../../store/auth-actions";
+import { resetPassword } from "../../../../store/auth-actions";
 
 function Signup() {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.auth);
 
   const submitHandler = (values) => {
-    dispatch(
-      signupWithEmailAndPassword(values.email, values.password, values.username)
-    );
+    dispatch(resetPassword(values.password));
   };
 
   return (
     <Formik
       initialValues={{
-        username: "",
-        email: "",
         password: "",
+        confirmPassword: "",
       }}
       validationSchema={Yup.object({
-        username: usernameValidation,
-        email: emailValidation,
         password: passwordValidation,
+        confirmPassword: confirmPasswordValidation,
       })}
       onSubmit={(values, action) => {
         submitHandler(values);
@@ -43,19 +35,19 @@ function Signup() {
     >
       {({ dirty, isValid, isSubmiting, handleSubmit }) => (
         <Form onSubmit={handleSubmit}>
-          <Form.Title>Hello Everyone , We are Chitchat</Form.Title>
+          <Form.Title>Create new password</Form.Title>
           <Form.Lead>
-            Wellcome to chitchat please login to your account.
+            Your new pasword must be different from the previous one.
           </Form.Lead>
-          {/* {error && <Form.Error message={error} />} */}
-          <Form.Group>
-            <Form.Input type="text" name="username" label="Username" />
-          </Form.Group>
-          <Form.Group>
-            <Form.Input type="email" name="email" label="Email Address" />
-          </Form.Group>
           <Form.Group>
             <Form.Input type="password" name="password" label="Password" />
+          </Form.Group>
+          <Form.Group>
+            <Form.Input
+              type="password"
+              name="confirmPassword"
+              label="Confirm Password"
+            />
           </Form.Group>
 
           <div className={classes.Actions}>
@@ -63,10 +55,9 @@ function Signup() {
               size="big"
               disabled={!(dirty && isValid) || isSubmiting}
             >
-              {loading ? "Loading" : "Signup"}
+              {loading ? "Loading" : "Confirm"}
             </Form.Submit>
           </div>
-          <OtherSignin />
         </Form>
       )}
     </Formik>

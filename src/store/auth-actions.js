@@ -1,7 +1,8 @@
 import { authActions, notificationActions } from "./index";
 import { defaultIcon, errorIcon } from "./notification-slice";
-import { auth, googleProvider } from "../lib/firebase";
+import { auth, googleProvider, twitterProvider } from "../lib/firebase";
 import { userCredentialsToUser } from "../helpers/utils";
+import history from "../helpers/history";
 
 export const signupWithEmailAndPassword = (email, password, username) => {
   return (dispatch) => {
@@ -69,6 +70,28 @@ export const signupWithGoogle = () => {
   };
 };
 
+export const signinWithTwitter = () => {
+  return (dispatch) => {
+    auth
+      .signInWithPopup(twitterProvider)
+      .then((result) => {
+        const user = userCredentialsToUser(result.user);
+        dispatch(authActions.signupSuccess(user));
+      })
+      .catch((error) => {
+        dispatch(
+          notificationActions.showNotification({
+            status: "error",
+            title: "Could not sign in with twitter",
+            message: error.message,
+            icon: errorIcon,
+          })
+        );
+        dispatch(authActions.signupError(error.message));
+      });
+  };
+};
+
 export const loginWithEmailAndPassword = (email, password) => {
   return (dispatch) => {
     dispatch(authActions.loading());
@@ -112,6 +135,82 @@ export const signOut = () => {
           notificationActions.showNotification({
             status: "error",
             title: "Sign out failed, please try again",
+            message: error.message,
+            icon: errorIcon,
+          })
+        );
+      });
+  };
+};
+
+export const sendResetPasswordEmail = (email) => {
+  return (dispatch) => {
+    auth
+      .sendPasswordResetEmail(email)
+      .then(
+        dispatch(
+          notificationActions.showNotification({
+            status: "default",
+            title: "Reset Password",
+            message: "Email for reseting password has been send",
+            icon: defaultIcon,
+          })
+        )
+      )
+      .catch((error) => {
+        dispatch(
+          notificationActions.showNotification({
+            status: "error",
+            title: "Failde to send reset password email",
+            message: error.message,
+            icon: errorIcon,
+          })
+        );
+      });
+  };
+};
+
+export const resetPassword = (newPassword) => {
+  return (dispatch) => {
+    const params = new URLSearchParams(window.location.search);
+    const actionCode = params.get("oobCode");
+    const mode = "resetPassword";
+    const continueUrl = "http://localhost:3000/login";
+    const apiKey = "AIzaSyBtbzcgdNrsa_5SnwoIsCzS8Czye34MMes";
+
+    auth
+      .verifyPasswordResetCode(actionCode)
+      .then((email) => {
+        const accountEmail = email;
+        auth
+          .confirmPasswordReset(actionCode, newPassword)
+          .then((response) => {
+            history.push("/");
+            dispatch(
+              notificationActions.showNotification({
+                status: "default",
+                title: "Password updated",
+                message: "Your password has been updated",
+                icon: defaultIcon,
+              })
+            );
+          })
+          .catch((error) => {
+            dispatch(
+              notificationActions.showNotification({
+                status: "error",
+                title: "Something went wrong",
+                message: error.message,
+                icon: errorIcon,
+              })
+            );
+          });
+      })
+      .catch((error) => {
+        dispatch(
+          notificationActions.showNotification({
+            status: "error",
+            title: "Something went wrong",
             message: error.message,
             icon: errorIcon,
           })

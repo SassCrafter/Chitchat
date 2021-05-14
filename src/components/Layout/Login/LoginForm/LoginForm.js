@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./LoginForm.module.scss";
-import { Form, Button } from "../../../index";
+import { Form, Button, OtherSignin } from "../../../index";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import {
@@ -9,14 +9,24 @@ import {
 } from "../../../../helpers/inputValidation";
 import { SIGN_UP } from "../../../../constants/routes";
 import { useSelector, useDispatch } from "react-redux";
-import { loginWithEmailAndPassword } from "../../../../store/auth-actions";
+import {
+  loginWithEmailAndPassword,
+  sendResetPasswordEmail,
+} from "../../../../store/auth-actions";
 
 function Login() {
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.auth);
+  const { loading, user } = useSelector((state) => state.auth);
+
   const loginHandler = ({ email, password }) => {
     dispatch(loginWithEmailAndPassword(email, password));
   };
+
+  const resetPasswordHandler = (e) => {
+    e.preventDefault();
+    dispatch(sendResetPasswordEmail("dmitriyprohorenko787@gmail.com"));
+  };
+
   return (
     <Formik
       initialValues={{
@@ -55,7 +65,9 @@ function Login() {
                 id="remember-me"
               />
             </div>
-            <p>Forgot Password?</p>
+            <a href="#" onClick={resetPasswordHandler}>
+              Forgot Password?
+            </a>
           </Form.Group>
           <div className={classes.Actions}>
             <Form.Submit disabled={!(dirty && isValid) || isSubmiting}>
@@ -65,17 +77,7 @@ function Login() {
               Signup
             </Button>
           </div>
-          <div className={classes.MoreOptions}>
-            <Button round className="bg-orange">
-              <i className="fab fa-google"></i>
-            </Button>
-            <Button round className="bg-blue">
-              <i className="fab fa-facebook"></i>
-            </Button>
-            <Button round className="bg-primary">
-              <i className="fab fa-twitter"></i>
-            </Button>
-          </div>
+          <OtherSignin />
         </Form>
       )}
     </Formik>
