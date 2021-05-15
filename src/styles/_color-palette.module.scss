@@ -1,0 +1,18 @@
+@import "./config/vars.module";
+
+$themes: (
+	light: (
+		bg-color: $bg-light-theme,
+		opaque-bg: rgba($bg-light-theme, 0.9),
+		text-color: $text-color-light-theme,
+		primary-color: $primary-color-light-theme,
+		secondary-color: $secondary-color-light-theme
+	),
+	dark: (
+		bg-color: black,
+		opaque-bg: rgba(black, 0.85),
+		text-color: white,
+		primary-color: $primary-color-light-theme,
+		secondary-color: $secondary-color-light-theme
+	)
+);

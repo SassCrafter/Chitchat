@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Router, Switch, Route } from "react-router-dom";
-import { Home, Login, Signup, ResetPassword } from "./pages/";
+import { Chat, Login, Signup, ResetPassword } from "./pages/";
 import { Notification } from "./components";
 import * as ROUTES from "./constants/routes";
 import { useSelector } from "react-redux";
@@ -44,7 +44,7 @@ function App() {
           <ResetPassword />
         </Route>
         <ProtectedRoute user={user} exact path={ROUTES.HOME}>
-          <Home />
+          <Chat />
         </ProtectedRoute>
       </Switch>
     </Router>

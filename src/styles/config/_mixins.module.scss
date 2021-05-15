@@ -29,3 +29,133 @@
   @include absolute(50%, 50%);
   transform: translate(-50%, -50%);
 }
+
+// theme-aware - Change color of a css property based on currently active theme
+
+@mixin theme-aware($key, $color) {
+  @each $theme-name, $theme-color in $themes {
+    :global(.theme-#{$theme-name}) & {
+      #{$key}: map-get(map-get($themes, $theme-name), $color);
+    }
+  }
+}
+
+// @mixin themify-1($themes: $themes, $type: local) {
+//   @each $theme, $map in $themes {
+//     @if $type == global {
+//       .theme-#{$theme} & {
+//         $theme-map: () !global;
+//         @each $key, $submap in $map {
+//           $value: map-get(map-get($themes, $theme), "#{$key}");
+//           $theme-map: map-merge(
+//             $theme-map,
+//             (
+//               $key: $value,
+//             )
+//           ) !global;
+//         }
+//       }
+
+//     }
+
+//     @else {
+//       :global(.theme-#{$theme}) & {
+//       $theme-map: () !global;
+//       @each $key, $submap in $map {
+//         $value: map-get(map-get($themes, $theme), "#{$key}");
+//         $theme-map: map-merge(
+//           $theme-map,
+//           (
+//             $key: $value,
+//           )
+//         ) !global;
+//       }
+//     }
+//   }
+//   @content;
+//       $theme-map: null !global;
+// }
+
+// @mixin themify($themes: $themes, $type: local) {
+//   @if $type == global {
+//     @each $theme, $map in $themes {
+//       .theme-#{$theme} & {
+//         $theme-map: () !global;
+//         @each $key, $submap in $map {
+//           $value: map-get(map-get($themes, $theme), "#{$key}");
+//           $theme-map: map-merge(
+//             $theme-map,
+//             (
+//               $key: $value,
+//             )
+//           ) !global;
+//         }
+
+//         @content;
+//         $theme-map: null !global;
+//       }
+//     }
+//   } @else {
+//     @each $theme, $map in $themes {
+//       :global(.theme-#{$theme}) & {
+//         $theme-map: () !global;
+//         @each $key, $submap in $map {
+//           $value: map-get(map-get($themes, $theme), "#{$key}");
+//           $theme-map: map-merge(
+//             $theme-map,
+//             (
+//               $key: $value,
+//             )
+//           ) !global;
+//         }
+//       }
+//     }
+//   }
+
+//   @content;
+//   $theme-map: null !global;
+// }
+
+@mixin themify-local($themes: $themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@mixin themify($themes: $themes) {
+  @each $theme, $map in $themes {
+    :global(.theme-#{$theme}) & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

@@ -15,7 +15,11 @@ export { default as Modal } from "./UI/Modal/Modal";
 export { default as Notification } from "./UI/Notification/Notification";
 export { default as Card } from "./UI/Card/Card";
 export { default as OtherSignin } from "./UI/OtherSignin/OtherSignin";
+export { default as ThemeContainer } from "./UI/ThemeContainer/ThemeContainer";
 
 export { default as LoginForm } from "./Layout/Login/LoginForm/LoginForm";
 export { default as SignupForm } from "./Layout/Signup/SignupForm/SignupForm";
 export { default as ResetPasswordForm } from "./Layout/ResetPassword/ResetPasswordForm/ResetPasswordForm";
+export { default as ChatNav } from "./Layout/Chat/ChatNav/ChatNav";
+export { default as ChatMain } from "./Layout/Chat/ChatMain/ChatMain";
+export { default as ChatUser } from "./Layout/Chat/ChatUser/ChatUser";
