@@ -1,0 +1,16 @@
+@import "../../../../../styles/config.module";
+
+.Container {
+	width: 5rem;
+	height: 100%;
+	border-radius: 0.5rem;
+	@include flexCenter;
+
+	@include themify($themes) {
+		color: themed("text-color");
+	}
+
+	i {
+		font-size: 2.5rem;
+	}
+}

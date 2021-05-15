@@ -1,0 +1,6 @@
+@import "../../../../../styles/config.module";
+
+.Container {
+	height: 100%;
+	@include flex(row, center);
+}

@@ -1,0 +1,10 @@
+@import "../../styles/config.module";
+
+.Container {
+	width: 100%;
+}
+
+.List {
+	@include flex;
+	flex-wrap: wrap;
+}

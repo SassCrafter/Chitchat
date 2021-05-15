@@ -1,0 +1,15 @@
+@import "../../../../styles/config.module";
+
+.Container {
+	width: 100%;
+	height: 6rem;
+	padding: 0.5rem 2rem;
+	@include themify($themes) {
+		background-color: themed("nav-bg");
+	}
+	box-shadow: 0 -3px 1.5rem rgba(0, 0, 0, 0.15);
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 500;
+}

@@ -1,0 +1,17 @@
+@import "../../../styles/config.module";
+
+.Container {
+	width: 100%;
+	border-radius: 50%;
+	overflow: hidden;
+
+	img {
+		object-fit: cover;
+		vertical-align: middle;
+	}
+}
+
+.Small {
+	width: 4rem;
+	height: 4rem;
+}

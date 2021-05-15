@@ -1,10 +1,12 @@
 import React from "react";
+import classes from "./ChatNav.module.scss";
+import List from "./List/List";
 
 function Nav() {
 	return (
-		<div>
-			<h1>Nav</h1>
-		</div>
+		<nav className={classes.Container}>
+			<List />
+		</nav>
 	);
 }
 
