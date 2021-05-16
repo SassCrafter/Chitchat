@@ -6,6 +6,8 @@
 	overflow: hidden;
 
 	img {
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
 		vertical-align: middle;
 	}
@@ -14,4 +16,9 @@
 .Small {
 	width: 4rem;
 	height: 4rem;
+}
+
+.Big {
+	width: 10rem;
+	height: 10rem;
 }

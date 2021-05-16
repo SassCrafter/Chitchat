@@ -1,7 +1,11 @@
-import { authActions, notificationActions } from "./index";
+import { authActions, usersActions, notificationActions } from "./index";
 import { defaultIcon, errorIcon } from "./notification-slice";
 import { auth, googleProvider, twitterProvider } from "../lib/firebase";
-import { userCredentialsToUser } from "../helpers/utils";
+import {
+  userCredentialsToUser,
+  userCredentialsToDbUser,
+} from "../helpers/utils";
+import { addUser } from "./users-actions";
 import history from "../helpers/history";
 
 export const signupWithEmailAndPassword = (email, password, username) => {
@@ -34,9 +38,10 @@ export const signupWithEmailAndPassword = (email, password, username) => {
                   icon: defaultIcon,
                 })
               );
-              // Update loading and error state
+              // Update loading and error state, create user in firestore
               const updatedUser = userCredentialsToUser(user);
               dispatch(authActions.signupSuccess(updatedUser));
+              dispatch(addUser(userCredentialsToDbUser(updatedUser)));
             });
           });
       })

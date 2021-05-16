@@ -3,52 +3,49 @@ import classes from "./List.module.scss";
 import Item from "../Item/Item";
 import { ProfileImage } from "../../../../index";
 import { useSelector } from "react-redux";
+import * as NAV_PANELS from "../../../../../constants/chatNavPanels";
 
-function List({ activeTabId, setActiveTabId }) {
-	// const { photo: profilePhoto, username } = useSelector(
-	// 	(state) => state.auth.user
-	// );
+function List({ activePanel, setActivePanel }) {
 	const { user } = useSelector((state) => state.auth);
-	console.log("List", user);
 	return (
 		<ul className={classes.Container}>
 			<Item
-				id="chats"
+				active={activePanel === NAV_PANELS.CHATS}
+				id={NAV_PANELS.CHATS}
+				setActivePanel={setActivePanel}
 				tooltip="Chats"
-				activeTabId={activeTabId}
-				setActiveTabId={setActiveTabId}
 			>
 				<i className="far fa-comment-dots"></i>
 			</Item>
 			<Item
-				id="groups"
+				active={activePanel === NAV_PANELS.GROUPS}
+				id={NAV_PANELS.GROUPS}
+				setActivePanel={setActivePanel}
 				tooltip="Groups"
-				activeTabId={activeTabId}
-				setActiveTabId={setActiveTabId}
 			>
 				<i className="fas fa-users"></i>
 			</Item>
 			<Item
-				id="friends"
+				active={activePanel === NAV_PANELS.FRIENDS}
+				id={NAV_PANELS.FRIENDS}
+				setActivePanel={setActivePanel}
 				tooltip="Friends"
-				activeTabId={activeTabId}
-				setActiveTabId={setActiveTabId}
 			>
 				<i className="far fa-address-book"></i>
 			</Item>
 			<Item
-				id="settings"
+				active={activePanel === NAV_PANELS.SETTINGS}
+				id={NAV_PANELS.SETTINGS}
+				setActivePanel={setActivePanel}
 				tooltip="Settings"
-				activeTabId={activeTabId}
-				setActiveTabId={setActiveTabId}
 			>
 				<i className="fas fa-cog"></i>
 			</Item>
 			<Item
-				id="profile"
+				active={activePanel === NAV_PANELS.PROFILE}
+				id={NAV_PANELS.PROFILE}
+				setActivePanel={setActivePanel}
 				tooltip="Profile"
-				activeTabId={activeTabId}
-				setActiveTabId={setActiveTabId}
 			>
 				<ProfileImage src={user?.photo} alt={user?.username} />
 			</Item>

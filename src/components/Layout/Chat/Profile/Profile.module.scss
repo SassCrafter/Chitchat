@@ -1,0 +1,17 @@
+@import "../../../../styles/config.module";
+
+.Top {
+	@include flex(column, center, flex-start);
+}
+
+.UserImage {
+	margin-bottom: 2rem;
+	@include themify($themes) {
+		border: 4px solid themed("profile-border-color");
+	}
+}
+
+.Name {
+	font-size: 3rem;
+	text-align: center;
+}

@@ -1,0 +1,8 @@
+@import "../../../../styles/config.module";
+
+.Container {
+	height: calc(100vh - 6rem);
+	@include themify($themes) {
+		background-color: themed("panel-bg");
+	}
+}

@@ -7,7 +7,9 @@ $themes: (
 		text-color: $text-color-light-theme,
 		primary-color: $primary-color-light-theme,
 		secondary-color: $secondary-color-light-theme,
-		nav-bg: $bg-light-theme
+		nav-bg: $bg-light-theme,
+		panel-bg: #f5f7fb,
+		profile-border-color: #f0eff5
 	),
 	dark: (
 		bg-color: black,
@@ -15,6 +17,8 @@ $themes: (
 		text-color: white,
 		primary-color: $primary-color-light-theme,
 		secondary-color: $secondary-color-light-theme,
-		nav-bg: black
+		nav-bg: black,
+		panel-bg: #f5f7fb,
+		profile-border-color: #f0eff5
 	)
 );
