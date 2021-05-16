@@ -1,11 +1,11 @@
-import { authActions, usersActions, notificationActions } from "./index";
+import { authActions, userActions, notificationActions } from "./index";
 import { defaultIcon, errorIcon } from "./notification-slice";
 import { auth, googleProvider, twitterProvider } from "../lib/firebase";
 import {
   userCredentialsToUser,
   userCredentialsToDbUser,
 } from "../helpers/utils";
-import { addUser } from "./users-actions";
+import { addUser } from "./user-actions";
 import history from "../helpers/history";
 
 export const signupWithEmailAndPassword = (email, password, username) => {
