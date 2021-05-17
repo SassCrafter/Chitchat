@@ -18,6 +18,7 @@ export { default as OtherSignin } from "./UI/OtherSignin/OtherSignin";
 export { default as ThemeContainer } from "./UI/ThemeContainer/ThemeContainer";
 export { default as ProfileImage } from "./UI/ProfileImage/ProfileImage";
 export { default as Wrapper } from "./UI/Wrapper/Wrapper";
+export { default as Search } from "./UI/Search/Search";
 
 export { default as LoginForm } from "./Layout/Login/LoginForm/LoginForm";
 export { default as SignupForm } from "./Layout/Signup/SignupForm/SignupForm";

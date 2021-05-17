@@ -12,7 +12,7 @@ export const userCredentialsToUser = (userCredentials) => {
 export const userCredentialsToDbUser = (userCredentials) => {
 	return {
 		uid: userCredentials.uid,
-		theme: "dark",
+		theme: "light",
 		messages: [],
 		friends: [],
 		settings: [],

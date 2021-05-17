@@ -19,7 +19,7 @@ function App() {
   console.log(dbUser);
 
   useEffect(() => {
-    document.body.classList.add(`theme-${dbUser.theme}`);
+    document.body.className = `theme-${dbUser.theme}`;
     console.log(authUser);
     authUser && dispatch(getUser(authUser.uid));
   }, [authUser]);

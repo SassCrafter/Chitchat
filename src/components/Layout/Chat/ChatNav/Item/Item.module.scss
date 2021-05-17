@@ -5,6 +5,7 @@
 	height: 100%;
 	border-radius: 0.5rem;
 	@include flexCenter;
+	cursor: pointer;
 
 	@include themify($themes) {
 		color: themed("text-color");
@@ -16,5 +17,8 @@
 }
 
 .Active {
-	border: 1px solid red;
+	@include themify($themes) {
+		background-color: themed("nav-item-bg");
+		color: themed("nav-item-color");
+	}
 }

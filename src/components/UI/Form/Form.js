@@ -24,8 +24,12 @@ Form.Group = function FormGroup({ children, className, ...restProps }) {
   );
 };
 
-Form.Input = function FormInput({ ...restProps }) {
-  return <Input {...restProps} />;
+Form.Input = function FormInput({ mode, ...restProps }) {
+  return mode === "regular" ? (
+    <input {...restProps} />
+  ) : (
+    <Input {...restProps} />
+  );
 };
 
 Form.Submit = function FormSubmit({ children, center, ...restProps }) {

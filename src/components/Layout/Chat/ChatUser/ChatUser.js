@@ -1,9 +1,10 @@
 import React from "react";
+import classes from "./ChatUser.module.scss";
 
-function ChatUser() {
+function ChatUser({ open }) {
 	return (
-		<div style={{ display: "none" }}>
-			<h1>Chat user</h1>
+		<div className={`${classes.Container} ${open ? classes.Open : ""}`}>
+			<h1>Chat</h1>
 		</div>
 	);
 }

@@ -1,0 +1,18 @@
+@import "../../../../styles/config.module";
+
+.Container {
+	width: 100%;
+	height: calc(100vh - 6rem);
+	position: fixed;
+	top: 0;
+	left: 0;
+	transform: translateX(100%);
+	transition: transform $t-time ease-in-out;
+	@include themify($themes) {
+		background-color: themed("user-chat-bg");
+	}
+}
+
+.Open {
+	transform: translateX(0);
+}

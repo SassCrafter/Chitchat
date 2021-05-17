@@ -9,7 +9,10 @@ $themes: (
 		secondary-color: $secondary-color-light-theme,
 		nav-bg: $bg-light-theme,
 		panel-bg: #f5f7fb,
-		profile-border-color: #f0eff5
+		profile-border-color: #f0eff5,
+		nav-item-bg: $primary-color,
+		nav-item-color: white,
+		user-chat-bg: white
 	),
 	dark: (
 		bg-color: black,
@@ -19,6 +22,9 @@ $themes: (
 		secondary-color: $secondary-color-light-theme,
 		nav-bg: black,
 		panel-bg: #f5f7fb,
-		profile-border-color: #f0eff5
+		profile-border-color: #f0eff5,
+		nav-item-bg: $primary-color,
+		nav-item-color: white,
+		user-chat-bg: white
 	)
 );
